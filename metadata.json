@@ -1,0 +1,5 @@
+{
+  "name": "CloudCashier AI",
+  "description": "一款智能、响应式的日常销售跟踪POS应用。具有库存管理、实时利润分析、销售历史记录以及通过Gemini提供的AI商业洞察功能。",
+  "requestFramePermissions": []
+}
