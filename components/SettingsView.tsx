@@ -121,7 +121,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({ settings: initialSet
             <ol className="list-decimal list-inside text-sm space-y-2 font-medium opacity-90">
               <li>访问 <a href="https://supabase.com" target="_blank" className="underline hover:text-blue-600">Supabase.com</a> 并注册账号。</li>
               <li>创建一个新项目（Project）。</li>
-              <li>在项目设置 (Project Settings) -> API 中找到 <code>URL</code> 和 <code>anon public key</code>。</li>
+              <li>在项目设置 (Project Settings) &rarr; API 中找到 <code>URL</code> 和 <code>anon public key</code>。</li>
               <li>将它们复制到左侧的输入框中并开启“启用云端同步”。</li>
               <li><strong>重要：</strong>在 Supabase 的 SQL Editor 中运行下方的建表代码。</li>
             </ol>
