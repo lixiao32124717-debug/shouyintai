@@ -10,6 +10,28 @@
     
     <title>云收银 CloudCashier AI</title>
     
+    <!-- Global Error Handler for White Screen Debugging -->
+    <script>
+      window.onerror = function(message, source, lineno, colno, error) {
+        const root = document.getElementById('root');
+        // Only show if root is empty (app failed to mount)
+        if (root && root.innerHTML.trim() === "") {
+          const errorDiv = document.createElement('div');
+          errorDiv.style.padding = "20px";
+          errorDiv.style.color = "red";
+          errorDiv.style.fontFamily = "monospace";
+          errorDiv.style.backgroundColor = "#fee2e2";
+          errorDiv.innerHTML = `
+            <h3>Application Error (App 启动失败)</h3>
+            <p><strong>Error:</strong> ${message}</p>
+            <p><strong>Source:</strong> ${source}:${lineno}</p>
+            <p>请截图此页面发送给开发者。</p>
+          `;
+          document.body.prepend(errorDiv);
+        }
+      };
+    </script>
+
     <!-- PWA Icons -->
     <link rel="icon" type="image/png" href="https://img.icons8.com/color/96/cash-register.png" />
     <link rel="apple-touch-icon" href="https://img.icons8.com/color/180/cash-register.png" />

@@ -1,10 +1,23 @@
 import { GoogleGenAI } from "@google/genai";
 import { Transaction, Product } from "../types";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// 移除顶层初始化，防止应用启动崩溃
+// const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
 export const generateBusinessInsight = async (transactions: Transaction[], products: Product[]) => {
+  // 安全获取 API Key
+  const apiKey = process.env.API_KEY;
+
+  // 1. 安全检查：如果没有 Key，优雅降级，不要崩溃
+  if (!apiKey || apiKey === 'undefined' || apiKey === '') {
+    console.warn("Gemini API Key is missing in environment variables.");
+    return "系统提示：未检测到 AI API Key。请在 Vercel 部署设置的 Environment Variables 中配置 API_KEY。";
+  }
+
   try {
+    // 2. 懒加载：只有在用户点击按钮时才初始化 AI 客户端
+    const ai = new GoogleGenAI({ apiKey });
+
     // Filter for today's transactions to keep context small and relevant
     const today = new Date().setHours(0, 0, 0, 0);
     const recentSales = transactions.filter(t => t.timestamp >= today);
